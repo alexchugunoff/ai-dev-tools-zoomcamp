@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TODO app</title>
+    <style>
+      body { font-family: system-ui, Arial, sans-serif; margin: 2rem; }
+      .resolved { text-decoration: line-through; color: #666; }
+      .card { border: 1px solid #ddd; padding: 1rem; margin-bottom: 1rem; border-radius: 6px; }
+      .header { display:flex; justify-content:space-between; align-items:center; }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1><a href="/">TODO</a></h1>
+      <div><a href="/create/">+ New</a></div>
+    </div>
+    <hr />
+    {% block content %}{% endblock %}
+  </body>
+</html>

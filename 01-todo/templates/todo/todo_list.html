@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% if todos %}
+    {% for t in todos %}
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <strong class="{% if t.resolved %}resolved{% endif %}">{{ t.title }}</strong>
+            {% if t.due_date %}<small> — due {{ t.due_date }}</small>{% endif %}
+            <div>{{ t.description|linebreaks }}</div>
+          </div>
+          <div style="text-align:right">
+            {% if not t.resolved %}
+              <form method="post" action="{{ t.get_absolute_url|default:'#' }}">
+                {% csrf_token %}
+              </form>
+              <form method="post" action="{% url 'todo:resolve' t.pk %}" style="margin-bottom:0.5rem;">
+                {% csrf_token %}
+                <button type="submit">Mark resolved</button>
+              </form>
+            {% endif %}
+            <a href="{% url 'todo:edit' t.pk %}">Edit</a> |
+            <a href="{% url 'todo:delete' t.pk %}">Delete</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No TODOs yet. <a href="{% url 'todo:create' %}">Create one</a>.</p>
+  {% endif %}
+{% endblock %}
