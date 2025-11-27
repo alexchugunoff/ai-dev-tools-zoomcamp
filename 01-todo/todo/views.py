@@ -1,5 +1,6 @@
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404, redirect
+from django.views.decorators.http import require_POST
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Todo
 from .forms import TodoForm
@@ -31,8 +32,9 @@ class TodoDeleteView(DeleteView):
     success_url = reverse_lazy('todo:list')
 
 
+@require_POST
 def mark_resolved(request, pk):
     todo = get_object_or_404(Todo, pk=pk)
-    todo.resolved = True
-    todo.save()
+    # use model method so logic stays in domain
+    todo.mark_resolved()
     return redirect('todo:list')

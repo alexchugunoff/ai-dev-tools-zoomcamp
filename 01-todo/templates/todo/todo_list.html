@@ -12,14 +12,29 @@
           </div>
           <div style="text-align:right">
             {% if not t.resolved %}
-              <form method="post" action="{{ t.get_absolute_url|default:'#' }}">
-                {% csrf_token %}
-              </form>
-              <form method="post" action="{% url 'todo:resolve' t.pk %}" style="margin-bottom:0.5rem;">
-                {% csrf_token %}
-                <button type="submit">Mark resolved</button>
-              </form>
-            {% endif %}
+              <div style="margin-bottom:0.5rem;">
+                <form method="post" action="{% url 'todo:resolve' t.pk %}">
+                  {% csrf_token %}
+                  <button type="submit">Mark resolved</button>
+                </form>
+              </div>
+              {% endif %}
+            <div style="font-size:smaller; margin-top:0.5rem; color:#444;">
+              <div>Priority: {{ t.get_priority_display }}</div>
+              <div>Assignee: {% if t.assignee %}{{ t.assignee.username }}{% else %}—{% endif %}</div>
+              <div>Tags:
+                {% if t.tags.exists %}
+                  {% for tag in t.tags.all %}
+                    {{ tag.name }}{% if not forloop.last %}, {% endif %}
+                  {% endfor %}
+                {% else %}
+                  —
+                {% endif %}
+              </div>
+              {% if t.is_overdue %}
+                <div style="color:crimson; font-weight:bold">Overdue</div>
+              {% endif %}
+            </div>
             <a href="{% url 'todo:edit' t.pk %}">Edit</a> |
             <a href="{% url 'todo:delete' t.pk %}">Delete</a>
           </div>
