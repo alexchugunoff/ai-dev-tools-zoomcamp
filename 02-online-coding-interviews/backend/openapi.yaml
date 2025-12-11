@@ -1,0 +1,46 @@
+openapi: 3.0.3
+info:
+  title: Online Coding Interviews API
+  version: 0.1.0
+paths:
+  /api/sessions:
+    post:
+      summary: Create a new interview session
+      responses:
+        '200':
+          description: created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+  /api/sessions/{id}:
+    get:
+      summary: Get session info
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: session
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  code:
+                    type: string
+                  lang:
+                    type: string
+
+components: {}
+
+description: |
+  WebSocket endpoint for realtime editing: ws://<host>/ws?sessionId={id}

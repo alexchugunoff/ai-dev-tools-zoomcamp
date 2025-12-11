@@ -1,0 +1,7 @@
+# Backend dependencies
+express
+ws
+cors
+uuid
+jest
+supertest

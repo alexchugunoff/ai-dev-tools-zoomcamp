@@ -1,0 +1,36 @@
+# Root requirements.txt
+
+Online Coding Interviews project dependencies summary.
+
+## Frontend (React + Vite)
+- react@18.2.0
+- react-dom@18.2.0
+- @uiw/react-codemirror@4.9.0
+- @codemirror/lang-javascript@6.1.0
+- @codemirror/lang-python@6.1.0
+- vite@5.0.0
+
+## Backend (Express + WebSocket)
+- express@4.18.2
+- ws@8.13.0
+- cors@2.8.5
+- uuid@9.0.0
+
+## Development
+- concurrently@8.2.0 (for running frontend+backend together)
+- jest@29.0.0 (backend tests)
+- supertest@6.3.3 (backend integration tests)
+
+## Installation
+
+Install all dependencies:
+```bash
+cd 02-online-coding-interviews
+npm run install:all
+```
+
+Or install individually:
+```bash
+cd 02-online-coding-interviews/frontend && npm install
+cd ../backend && npm install
+```

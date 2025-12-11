@@ -1,0 +1,9 @@
+# Frontend dependencies
+react
+react-dom
+
+# Backend dependencies
+express
+ws
+cors
+uuid

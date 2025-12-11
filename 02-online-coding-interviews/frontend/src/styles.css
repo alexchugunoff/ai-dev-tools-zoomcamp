@@ -1,0 +1,8 @@
+body { font-family: system-ui, Arial; margin: 0; padding: 0; }
+.container { padding: 16px; }
+header { display:flex; gap:12px; align-items:center; }
+main { margin-top: 12px; }
+.controls { margin-top: 8px; display:flex; gap:8px; align-items:center; }
+select { padding: 4px 8px; }
+button { padding: 8px 12px; cursor:pointer; }
+#preview { margin-top: 12px; border:1px solid #eee; padding:8px; }
