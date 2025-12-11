@@ -3,10 +3,15 @@ const { WebSocketServer } = require('ws')
 const http = require('http')
 const cors = require('cors')
 const { v4: uuidv4 } = require('uuid')
+const path = require('path')
 
 const app = express()
 app.use(express.json())
 app.use(cors())
+
+// Serve static frontend files from dist folder (for Docker)
+const frontendDistPath = path.join(__dirname, '../frontend/dist')
+app.use(express.static(frontendDistPath))
 
 const sessions = new Map()
 
@@ -27,6 +32,14 @@ app.get('/api/sessions/:id', (req, res) => {
 
 app.get('/openapi.yaml', (req, res) => {
   res.type('yaml').send(require('fs').readFileSync(__dirname + '/openapi.yaml', 'utf8'))
+})
+
+// Serve index.html for SPA routing (fallback for client-side routes)
+app.get('*', (req, res) => {
+  const indexPath = path.join(frontendDistPath, 'index.html')
+  res.sendFile(indexPath, (err) => {
+    if (err) res.status(500).send(err)
+  })
 })
 
 const server = http.createServer(app)

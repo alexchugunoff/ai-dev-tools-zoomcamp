@@ -46,6 +46,7 @@ Pyodide
 Now let's containerize our application. Ask AI to help you create a Dockerfile for the application. Put both backend and frontend in one container.
 
 ## What's the base image you used for your Dockerfile?
+node:18-alpine
 
 # Question 7: Deployment
 Now let's deploy it. Choose a service to deploy your application.
