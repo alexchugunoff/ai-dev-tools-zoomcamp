@@ -1,6 +1,6 @@
 const request = require('supertest')
 const WebSocket = require('ws')
-const { start, sessions } = require('../server')
+const { start, sessions } = require('./server')
 
 let srv
 beforeAll(async () => {

@@ -40,6 +40,7 @@ Now let's add code execution.
 For security reasons, we don't want to execute code directly on the server. Instead, let's use WASM to execute the code only in the browser.
 
 ## Which library did AI use for compiling Python to WASM?
+Pyodide
 
 # Question 6: Containerization
 Now let's containerize our application. Ask AI to help you create a Dockerfile for the application. Put both backend and frontend in one container.

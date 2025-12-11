@@ -11,9 +11,11 @@ app.use(cors())
 const sessions = new Map()
 
 app.post('/api/sessions', (req, res) => {
+  console.log('[POST /api/sessions] Creating new session')
   const id = uuidv4()
   const session = { id, code: '// start coding', lang: 'javascript' }
   sessions.set(id, session)
+  console.log('[POST /api/sessions] Session created:', id)
   res.json({ id })
 })
 
