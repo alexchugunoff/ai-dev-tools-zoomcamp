@@ -7,6 +7,10 @@ Frontend
 OpenAPI specs
 Backend
 ## What's the initial prompt you gave to AI to start the implementation?
+create platform for online coding interviews. the app should be able to do the following: create a link and share it with candidates, allow everyone who connects to edit code in the code panel, show real-time updates to all connected users, support syntax highlighting for multiple languages, execute code safely in the browser.
+you have to do next steps: implement frontend, analyse the content of the client and create an OpenAPI specs based on what it needs, implement backend based on these specs. use this technologies: frontend - react + vite, backend - express.js. put the whole project in existing folder '02-online-coding-interviews', use separate folder for frontend, backend. follow the guidelines in AGENTS.md
+
+
 
 # Question 2: Integration Tests
 Maybe at this point your application will already function. Maybe not. But it's always a good idea to cover it with tests.
