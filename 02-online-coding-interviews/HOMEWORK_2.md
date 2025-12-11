@@ -7,3 +7,43 @@ Frontend
 OpenAPI specs
 Backend
 ## What's the initial prompt you gave to AI to start the implementation?
+
+# Question 2: Integration Tests
+Maybe at this point your application will already function. Maybe not. But it's always a good idea to cover it with tests.
+
+We usually do it even before trying to run the application because it helps to resurface all the problems with implementation.
+
+Ask AI to write integration tests that check that the interaction between client and server works.
+
+Also it's a good idea to ask it to start creating a README.md file with all the commands for running and testing your application.
+
+## What's the terminal command you use for executing tests?
+
+# Question 3: Running Both Client and Server
+Now let's make it possible to run both client and server at the same time. Use concurrently for that.
+
+## What's the command you have in package.json for npm dev for running both?
+
+# Question 4: Syntax Highlighting
+Let's now add support for syntax highlighting for JavaScript and Python.
+
+## Which library did AI use for it?
+
+# Question 5: Code Execution
+Now let's add code execution.
+
+For security reasons, we don't want to execute code directly on the server. Instead, let's use WASM to execute the code only in the browser.
+
+## Which library did AI use for compiling Python to WASM?
+
+# Question 6: Containerization
+Now let's containerize our application. Ask AI to help you create a Dockerfile for the application. Put both backend and frontend in one container.
+
+## What's the base image you used for your Dockerfile?
+
+# Question 7: Deployment
+Now let's deploy it. Choose a service to deploy your application.
+
+## Which service did you use for deployment?
+
+# Homework URL
