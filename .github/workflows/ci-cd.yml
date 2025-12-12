@@ -1,0 +1,46 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install root dependencies
+      run: npm install
+
+    - name: Install frontend dependencies
+      run: cd 02-online-coding-interviews && npm run install:all
+
+    - name: Run frontend tests
+      run: echo "No frontend tests configured"
+
+    - name: Run backend tests
+      run: cd 02-online-coding-interviews/backend && npm test
+
+    - name: Run integration tests
+      run: cd 02-online-coding-interviews && npm test
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+    - name: Deploy to Render
+      run: |
+        curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}

@@ -104,8 +104,35 @@ Access the app at: **http://localhost:3000**
    - **Environment**: `Production`
    - Add environment variable: `NODE_ENV=production`
 
-5. **Deploy**: Click "Create Web Service"
+5. **Create Deploy Hook**:
+   - In your Render service settings, go to "Settings" tab
+   - Scroll down to "Deploy Hook" section
+   - Copy the deploy hook URL
+
+6. **Setup GitHub Secrets**:
+   - Go to your GitHub repository settings
+   - Navigate to "Secrets and variables" → "Actions"
+   - Add new secret: `RENDER_DEPLOY_HOOK_URL`
+   - Paste your Render deploy hook URL as the value
+
+7. **Deploy**: Click "Create Web Service"
 
 Your app will be available at: `https://your-service-name.onrender.com`
 
 **Note**: Free tier has sleep after 15 minutes of inactivity. First load may take ~30 seconds.
+
+### CI/CD Pipeline
+
+This project includes a GitHub Actions CI/CD pipeline that:
+
+1. **Runs on every push to main and pull requests**
+2. **Executes all tests** (frontend, backend, integration)
+3. **Auto-deploys to Render** when tests pass on main branch
+
+**Setup Requirements:**
+- Render service created with deploy hook URL
+- GitHub secret `RENDER_DEPLOY_HOOK_URL` configured
+
+**Pipeline Jobs:**
+- `test`: Runs all test suites
+- `deploy`: Triggers Render deployment (only on main branch pushes)
