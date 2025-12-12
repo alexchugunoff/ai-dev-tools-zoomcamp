@@ -12,9 +12,7 @@ yarn-error.log*
 README.md
 LICENSE
 
-frontend/src/
 frontend/dist/
-frontend/index.html
 frontend/*.config.js
 
 backend/__tests__/
