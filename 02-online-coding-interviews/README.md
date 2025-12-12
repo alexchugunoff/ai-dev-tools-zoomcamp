@@ -80,3 +80,32 @@ Access the app at: **http://localhost:3000**
 - Code execution output is captured and displayed in the preview pane.
 - All execution is sandboxed—no direct server-side code evaluation.
 - Docker base image: `node:18-alpine` (lightweight, ~160MB).
+
+## Deployment
+
+### Render (Free Tier)
+
+1. **Create Render Account**: Go to [render.com](https://render.com) and sign up with GitHub.
+
+2. **Connect Repository**: 
+   - Click "New" → "Web Service"
+   - Connect your GitHub account
+   - Select repository: `ai-dev-tools-zoomcamp`
+   - Branch: `main`
+
+3. **Configure Service**:
+   - **Name**: `online-coding-interviews` (or any name)
+   - **Runtime**: `Docker`
+   - **Dockerfile Path**: `./02-online-coding-interviews/Dockerfile`
+   - **Docker Build Context Directory**: `./02-online-coding-interviews`
+   - **Branch**: `main`
+
+4. **Environment**:
+   - **Environment**: `Production`
+   - Add environment variable: `NODE_ENV=production`
+
+5. **Deploy**: Click "Create Web Service"
+
+Your app will be available at: `https://your-service-name.onrender.com`
+
+**Note**: Free tier has sleep after 15 minutes of inactivity. First load may take ~30 seconds.
