@@ -35,6 +35,11 @@ jobs:
     - name: Run integration tests
       run: cd 02-online-coding-interviews && npm test
 
+    - name: Build Docker image
+      run: |
+        cd 02-online-coding-interviews
+        docker build -t online-coding-interviews-test .
+
   deploy:
     needs: test
     runs-on: ubuntu-latest

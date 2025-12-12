@@ -126,13 +126,17 @@ Your app will be available at: `https://your-service-name.onrender.com`
 This project includes a GitHub Actions CI/CD pipeline that:
 
 1. **Runs on every push to main and pull requests**
-2. **Executes all tests** (frontend, backend, integration)
-3. **Auto-deploys to Render** when tests pass on main branch
+2. **Executes all tests** (backend, integration)
+3. **Validates Docker build** to ensure image builds correctly
+4. **Auto-deploys to Render** when tests pass on main branch
 
 **Setup Requirements:**
 - Render service created with deploy hook URL
 - GitHub secret `RENDER_DEPLOY_HOOK_URL` configured
 
 **Pipeline Jobs:**
-- `test`: Runs all test suites
+- `test`: Runs all test suites + validates Docker build
 - `deploy`: Triggers Render deployment (only on main branch pushes)
+
+**Why no Docker push?**
+Render automatically rebuilds the Docker image from source when the deploy hook is triggered. This ensures the latest code is always deployed without needing to manage Docker registries.
